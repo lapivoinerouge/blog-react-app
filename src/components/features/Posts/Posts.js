@@ -15,8 +15,8 @@ const Posts = () => {
       </div>
       <div className='row'>
         {posts.map(post =>
-        <div className={'col-12 col-md-6 col-lg-4 ' + styles.card}>
-          <Card>
+        <div className={'col-12 col-md-6 col-lg-4'} key={post.id}>
+          <Card className={styles.card}>
             <Card.Body>
               <Card.Title>{post.title}</Card.Title>
               <Card.Text className={styles.subtitle}><b>Author: </b>{post.author}</Card.Text>
