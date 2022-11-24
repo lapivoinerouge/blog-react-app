@@ -1,8 +1,9 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getAllPosts } from '../../../redux/postsRedux';
 import PageTitle from '../../common/PageTitle/PageTitle';
 import styles from './Posts.module.scss';
+import { NavLink } from 'react-router-dom';
 
 const Posts = () => {
   const posts = useSelector(getAllPosts);
@@ -11,7 +12,7 @@ const Posts = () => {
     <section>
       <div className={'d-flex justify-content-between ' + styles.titleContainer}>
         <PageTitle>All posts</PageTitle>
-        <Button className={styles.button} href={'/post/add'} variant='outline-primary'>Add post</Button>
+        <NavLink className={'btn btn-outline-primary'} to={'/post/add'}>Add post</NavLink>
       </div>
       <div className='row'>
         {posts.map(post =>
@@ -22,7 +23,7 @@ const Posts = () => {
               <Card.Text className={styles.subtitle}><b>Author: </b>{post.author}</Card.Text>
               <Card.Text className={styles.subtitle}><b>Published: </b>{post.publishedDate}</Card.Text>
               <Card.Text className={styles.description}>{post.shortDescription}</Card.Text>
-              <Button href={'/post/' + post.id} variant='primary'>Read more</Button>
+              <NavLink className={'btn btn-primary'} to={'/post/' + post.id}>Read more</NavLink>
             </Card.Body>
           </Card>
         </div>

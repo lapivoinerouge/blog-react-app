@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePost, getPostById } from '../../../redux/postsRedux';
 import { useParams, Navigate } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
 import styles from './Post.module.scss';
 import { useState } from 'react';
@@ -27,7 +28,7 @@ const Post = () => {
       <div className='d-flex justify-content-between'>
         <h2>Article</h2>
         <div className={styles.buttonContainer}>
-          <Button variant='outline-primary' href={'/post/edit/'+ postId}>Edit</Button>  
+          <NavLink className={'btn btn-outline-primary'} to={'/post/edit/'+ postId}>Edit</NavLink>  
           <Button onClick={handleShowModal} variant='outline-danger'>Delete</Button>
         </div>
       </div>
