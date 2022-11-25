@@ -9,14 +9,19 @@ import { useForm } from "react-hook-form";
 /* styles */
 import 'react-quill/dist/quill.snow.css';
 import "react-datepicker/dist/react-datepicker.css";
+import { useSelector } from 'react-redux';
+import { getCategories } from '../../../redux/categoriesRedux';
 
 const PostForm = ({action, actionText, ...props}) => {
+  const categories = useSelector(getCategories);
+
   /* post data */
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');
   const [publishedDate, setPublishedDate] = useState(props.publishedDate || dateToStr(new Date()));
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
+  const [category, setCategory] = useState(props.category);
 
   /* errors */
   const [contentError, setContentError] = useState(false);
@@ -24,16 +29,17 @@ const PostForm = ({action, actionText, ...props}) => {
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
-  const handleSubmit = e => {
+  const handleSubmit = () => {
     setContentError(!content);
     setDateError(!publishedDate);
     if (content && publishedDate) {
-      action({ title, author, publishedDate, shortDescription, content });
+      action({ title, author, publishedDate, shortDescription, content, category });
       setTitle('');
       setAuthor('');
       setPublishedDate('');
       setShortDescription('');
       setContent('');
+      setCategory('');
     }
   };
 
@@ -63,6 +69,18 @@ const PostForm = ({action, actionText, ...props}) => {
         <Form.Label>Date</Form.Label>
         <DatePicker value={publishedDate} onChange={v => setPublishedDate(dateToStr(v))} />
         {dateError && <small className="d-block form-text text-danger mt-2">This field is required</small>}
+      </Form.Group>
+      <Form.Group className="mb-3 col-md-4" controlId="formCategory">
+        <Form.Label>Category</Form.Label>
+        <Form.Select 
+          {...register("category", { required: true, minLength: 3 })} 
+          value={category} 
+          type="select" 
+          placeholder="Select category" 
+          onChange={e => setCategory(e.target.value)}>
+            {categories.map(categoryOption => <option key={categoryOption}>{categoryOption}</option>)}
+          </Form.Select>
+          {errors.category && <small className="d-block form-text text-danger mt-2">This field is required</small>}
       </Form.Group>
       <Form.Group className="mb-3 col-md-6" controlId="formDescription">
         <Form.Label>Short description</Form.Label>

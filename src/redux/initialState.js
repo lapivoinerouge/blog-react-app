@@ -1,13 +1,13 @@
 const initialState = {
   posts: [
-
     {
       id: '1',
       title: 'Article 1 Title',
       shortDescription: 'Short description of the article 1...',
       content: 'Main content of the article 1',
       publishedDate: '02/02/2022',
-      author: 'John Doe'
+      author: 'John Doe',
+      category: 'Sport'
     },
     {
       id: '2',
@@ -15,7 +15,8 @@ const initialState = {
       shortDescription: 'Short description of the article 2...',
       content: 'Main content of the article 2',
       publishedDate: '11/04/2022',
-      author: 'Molly Bow'
+      author: 'Molly Bow',
+      category: 'Movies'
     },
     {
       id: '3',
@@ -23,7 +24,8 @@ const initialState = {
       shortDescription: 'Short description of the article 3...',
       content: 'Main content of the article 3',
       publishedDate: '25/05/2022',
-      author: 'John Doe'
+      author: 'John Doe',
+      category: 'News'
     },
     {
       id: '4',
@@ -31,9 +33,11 @@ const initialState = {
       shortDescription: 'Short description of the article 4...',
       content: 'Main content of the article 4',
       publishedDate: '01/11/2022',
-      author: 'Carla Doopa'
+      author: 'Carla Doopa',
+      category: 'Sport'
     }
   ],
+  categories: [ 'Sport', 'News', 'Movies'],
 };
 
 export default initialState;

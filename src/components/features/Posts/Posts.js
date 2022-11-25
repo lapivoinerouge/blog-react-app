@@ -22,6 +22,7 @@ const Posts = () => {
               <Card.Title>{post.title}</Card.Title>
               <Card.Text className={styles.subtitle}><b>Author: </b>{post.author}</Card.Text>
               <Card.Text className={styles.subtitle}><b>Published: </b>{post.publishedDate}</Card.Text>
+              <Card.Text className={styles.subtitle}><b>Category: </b>{post.category}</Card.Text>
               <Card.Text className={styles.description}>{post.shortDescription}</Card.Text>
               <NavLink className={'btn btn-primary'} to={'/post/' + post.id}>Read more</NavLink>
             </Card.Body>

@@ -26,6 +26,7 @@ const EditPostForm = () => {
     shortDescription={post.shortDescription}
     publishedDate={post.publishedDate}
     content={post.content}
+    category={post.category}
     />
   )
 };

@@ -34,6 +34,7 @@ const Post = () => {
       </div>
       <p><b>Author: </b>{post.author}</p>
       <p><b>Published: </b>{post.publishedDate}</p>
+      <p><b>Category: </b>{post.category}</p>
       <p dangerouslySetInnerHTML={{ __html: post.content }} />
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
